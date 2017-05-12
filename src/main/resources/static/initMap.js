@@ -1,14 +1,14 @@
 $(document).ready(
     function initMap() {
-        var uluru = {lat: parseFloat($("#lat").val()), lng: parseFloat($("#lon").val())};
+        var axondanang = {lat: parseFloat($("#lat").val()), lng: parseFloat($("#lon").val())};
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,
-            center: uluru
+            center: axondanang
         });
         infoWindow = new google.maps.InfoWindow;
 
         var marker = new google.maps.Marker({
-            position: uluru,
+            position: axondanang,
             map: map
         });
 
@@ -18,7 +18,6 @@ $(document).ready(
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-
                 infoWindow.setPosition(pos);
                 infoWindow.setContent('Location found.');
                 infoWindow.open(map);
