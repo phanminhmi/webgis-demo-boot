@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var latlon = new google.maps.LatLng($("#lat").val(), $("#lon").val());
+    var latlon = new google.maps.LatLng($("#lat").val(), $("#lng").val());
     var map = new google.maps.Map(document.getElementById('googleMap'), {
         center: latlon,
         zoom: 18,
@@ -12,6 +12,6 @@ $(document).ready(function () {
     });
     google.maps.event.addListener(marker, 'dragend', function (pos) {
         $("#lat").val(pos.latLng.lat().toFixed(6));
-        $("#lon").val(pos.latLng.lng().toFixed(6));
+        $("#lng").val(pos.latLng.lng().toFixed(6));
     });
 });

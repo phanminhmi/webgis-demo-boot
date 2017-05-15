@@ -13,7 +13,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label">Longtitude</label>
-                    <form:input path="lon" type="text" class="form-control"/>
+                    <form:input path="lng" type="text" class="form-control"/>
                 </div>
             </form:form>
         </div>

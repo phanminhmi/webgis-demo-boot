@@ -1,10 +1,32 @@
 $(document).ready(
     function initMap() {
-        var axondanang = {lat: parseFloat($("#lat").val()), lng: parseFloat($("#lon").val())};
+        var axondanang = {lat: parseFloat($("#lat").val()), lng: parseFloat($("#lng").val())};
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
+            zoom: 5,
             center: axondanang
         });
+        $.ajax({
+            url: 'http://localhost:8080/api/getAllCity',
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                var citymap = data;
+                for (var city in citymap) {
+                    // Add the circle for this city to the map.
+                    var cityCircle = new google.maps.Circle({
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: '#FF0000',
+                        fillOpacity: 0.35,
+                        map: map,
+                        center: citymap[city].center,
+                        radius: Math.sqrt(citymap[city].population) * 100
+                    });
+                }
+            }
+        });
+
         infoWindow = new google.maps.InfoWindow;
 
         var marker = new google.maps.Marker({
@@ -36,19 +58,7 @@ $(document).ready(
             handleLocationError(false, infoWindow, map.getCenter());
         }
 
-        for (var city in citymap) {
-            // Add the circle for this city to the map.
-            var cityCircle = new google.maps.Circle({
-                strokeColor: '#FF0000',
-                strokeOpacity: 0.8,
-                strokeWeight: 2,
-                fillColor: '#FF0000',
-                fillOpacity: 0.35,
-                map: map,
-                center: citymap[city].center,
-                radius: Math.sqrt(citymap[city].population) * 100
-            });
-        }
+
     },
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
@@ -205,18 +215,3 @@ var googleLogo = {
         }
     ]
 }
-
-var citymap = {
-    danang: {
-        center: {lat: 16.0544, lng: 108.2022},
-        population: 1047000
-    },
-    hanoi: {
-        center: {lat: 21.0278, lng: 105.8342},
-        population: 7588000
-    },
-    saigon: {
-        center: {lat: 10.8231, lng: 106.6297},
-        population: 8426000
-    }
-};
