@@ -4,6 +4,7 @@ package vn.axonactive.entity;
  * Created by pmmi on 5/9/2017.
  */
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -28,8 +29,8 @@ public class Location implements Serializable{
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonIgnore
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getLocationId() {
         return locationId;
     }
@@ -39,7 +40,7 @@ public class Location implements Serializable{
     }
 
     @OneToOne(mappedBy = "center")
-    @JsonIgnore
+    @JsonBackReference
     public City getCity() {
         return city;
     }
