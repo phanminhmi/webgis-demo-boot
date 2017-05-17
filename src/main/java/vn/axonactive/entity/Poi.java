@@ -1,5 +1,6 @@
 package vn.axonactive.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,15 +24,15 @@ public class Poi {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "address")
-    private String address;
-
     @Column(name = "lat")
     private float lat;
 
     @Column(name = "lng")
     private float lng;
 
-    @Column(name = "type")
-    private String type;
+    public Poi(String name, float lat, float lng) {
+        this.name = name;
+        this.lat = lat;
+        this.lng = lng;
+    }
 }

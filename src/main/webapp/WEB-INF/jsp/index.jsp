@@ -6,10 +6,10 @@
 <div class="container" style="margin-top: 60px;">
     <div>
         <div class="col-md-4">
-            <form:form action="#" method="get" modelAttribute="location" id="poiForm">
+            <form:form action="/create" method="get" modelAttribute="newPoi" id="poiForm">
                 <div>
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" class="form-control"/>
+                    <input path="name" type="text" name="name" id="name" class="form-control"/>
                 </div>
 
                 <div class="form-group">

@@ -1,5 +1,6 @@
 $(document).ready(function () {
     var latlon = new google.maps.LatLng($("#lat").val(), $("#lng").val());
+    console.log('latlon', latlon);
     var map = new google.maps.Map(document.getElementById('googleMap'), {
         center: latlon,
         zoom: 18,
